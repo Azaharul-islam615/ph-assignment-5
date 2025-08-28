@@ -7,7 +7,8 @@ let count=0
     heartItem.addEventListener("click",function(){
         count++
         countHeart(count)
-    })
+        heartItem.style.color="red"
+        })
     
  }
   
@@ -32,12 +33,13 @@ function countHeart(count){
              alert(`Calling ${title} ${hotLine}....`)
              convertCoin=convertCoin-20
              numberOfCoin.innerText=convertCoin
+              addElement(title,hotLine)
 
         }
         else{
             alert("insufficient coin")
         }
-        addElement(title,hotLine)
+       
             
  }) }
 //  Add item in the call history 
@@ -48,12 +50,12 @@ function addElement(title,hotLine){
 
      const divParent=document.createElement("div")
      divParent.innerHTML=` 
-    <div class="flex justify-between items-center pt-4 pb-4 pl-4 pr-4 bg-[#FAFAFA] rounded-lg">
+    <div class="flex justify-between items-center pt-4 pb-4 pl-3 pr-3 bg-[#FAFAFA] rounded-lg">
                 <div>
-                    <h1 class="font-bold">${title}</h1>
+                    <h1 class="font-bold text-[14px] ">${title}</h1>
                     <p class="text-[#5C5C5C]">${hotLine}</p>
                 </div>
-                <p>${time}</p>
+                <p class="text-[12px] font-semibold">${time}</p>
             </div>`
             aside.appendChild(divParent)
             divParent.classList.add("asideproperty")
@@ -82,6 +84,7 @@ for(const copyCount of copyCounts){
     inputTag.select()
     document.execCommand('copy')
     document.body.removeChild(inputTag)
+   
    })
 }
 function countcopies(count){
