@@ -42,6 +42,8 @@ function countHeart(count){
  }) }
 //  Add item in the call history 
 function addElement(title,hotLine){
+    const now = new Date();
+    const time = now.toLocaleTimeString();
     const aside=document.getElementById("history")
 
      const divParent=document.createElement("div")
@@ -51,7 +53,7 @@ function addElement(title,hotLine){
                     <h1 class="font-bold">${title}</h1>
                     <p class="text-[#5C5C5C]">${hotLine}</p>
                 </div>
-                <p>11:36:58 AM</p>
+                <p>${time}</p>
             </div>`
             aside.appendChild(divParent)
             divParent.classList.add("asideproperty")
@@ -67,7 +69,25 @@ document.getElementById("clearAll").addEventListener("click",function(){
 
 // copy button
 
-function countNumberOfcopies(count){
-     const copyCounter=document.getElementById("count-copy").innerText
-     copyCounter=count
+const copyCounts=document.querySelectorAll(".copyBtn")
+for(const copyCount of copyCounts){
+   copyCount.addEventListener("click",function(){
+    const title=copyCount.parentNode.parentNode.children[3].innerText
+     count++
+    countcopies(count)
+    alert(`Copied number ${title}`)
+    const inputTag=document.createElement("input")
+    document.body.appendChild(inputTag)
+    inputTag.value=title
+    inputTag.select()
+    document.execCommand('copy')
+    document.body.removeChild(inputTag)
+   })
+}
+function countcopies(count){
+     let Counter=document.getElementById("count-copy")
+     
+     Counter.innerText=count
+     
+     
 }
